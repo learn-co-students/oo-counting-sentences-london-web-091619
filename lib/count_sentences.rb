@@ -27,6 +27,12 @@ class String
   end
 
   def count_sentences
-    self.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size
-  end
+   sentences = []
+   split_sentences = self.split(/(?<=[?.!])\s*/)
+   split_sentences.each do |sentence|
+     sentences << sentence if sentence.start_with?(/[A-Za-z]/)
+   end
+   sentences.length
+ end
+
 end
